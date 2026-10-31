@@ -1,30 +1,148 @@
-html, body {
-    background-color: lightblue;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
+:root {
+    --cream: #f4f3eb;
+    --forest: #174b43;
+    --white: #ffffff;
+    --ink: #243c36;
+    --pale-green: #e4eee5;
+    --service-green: #397953;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
+    margin: 0;
+    background-color: var(--cream);
+    color: var(--ink);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+nav {
+    background-color: var(--forest);
+    padding: 0.75rem 1rem;
+}
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    max-width: 68rem;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+}
+
+nav a {
+    display: block;
+    min-height: 44px;
+    padding: 0.625rem 1rem;
+    border-radius: 0.25rem;
+    color: var(--white);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+nav a:hover,
+nav a:active {
+    background-color: var(--pale-green);
+    color: var(--forest);
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+}
+
+a:focus-visible {
+    outline: 3px solid var(--forest);
+    outline-offset: 3px;
+}
+
+nav a:focus-visible {
+    outline-color: var(--pale-green);
+}
+
+main {
+    max-width: 68rem;
+    margin: 1.5rem auto;
+    padding: 1.5rem;
+    border-top: 0.375rem solid var(--service-green);
+    background-color: var(--white);
+    overflow-wrap: anywhere;
+}
+
+h1,
+h2 {
+    color: var(--forest);
+    font-family: Georgia, 'Times New Roman', serif;
+    line-height: 1.2;
+}
+
+h1 {
+    margin: 0 0 1.5rem;
+    font-size: 2.25rem;
+}
+
+h2 {
+    margin: 1.5rem 0 1rem;
+    font-size: 1.5rem;
+}
+
+p {
+    max-width: 65ch;
+    margin: 0 0 1.5rem;
+}
+
+main ul {
+    margin: 1.5rem 0 0;
+    padding-left: 1.5rem;
+}
+
+main li {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-left: 0.25rem solid var(--pale-green);
+}
+
+main li::marker {
+    color: var(--service-green);
+}
+
+main li img {
+    display: block;
+    width: 4rem;
+    max-width: 100%;
+    height: auto;
+    margin: 0 0 1rem;
+}
+
+.main-logo {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 2rem auto 0;
+}
+
+footer {
+    padding: 0 1.5rem 1.5rem;
+    text-align: center;
+}
+
+footer p {
+    max-width: none;
+    margin: 0;
+    font-size: 0.875rem;
+}
+
+@media (min-width: 48rem) {
     nav {
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            display: inline;
-            margin-right: 15px;
-        }
-
-        a {
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-
-            &:hover {
-                color: #0066cc;
-            }
-        }
+        padding: 1rem 2rem;
     }
-}      
+    main {
+        margin: 3rem auto;
+        padding: 3rem;
+    }
+    h1 {
+        font-size: 3rem;
+    }
+}
