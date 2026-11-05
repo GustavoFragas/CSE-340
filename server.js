@@ -43,6 +43,11 @@ app.get('/organizations', async (req, res) => {
     const organizations = await getAllOrganizations();
     const title = 'Our Partner Organizations';
 
+app.get('/categories', (req, res) => {
+    const title = 'Service Categories';
+    res.render('categories', { title });
+});
+
     res.render('organizations', { title, organizations });
 });
 
