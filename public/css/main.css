@@ -123,6 +123,31 @@ main li img {
     margin: 2rem auto 0;
 }
 
+.category-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding-left: 0;
+    list-style: none;
+}
+
+.category-tags li {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.category-tags a {
+    display: block;
+    min-height: 44px;
+    padding: 0.625rem 1rem;
+    border-radius: 0.25rem;
+    background-color: var(--pale-green);
+    color: var(--forest);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
 footer {
     padding: 0 1.5rem 1.5rem;
     text-align: center;
