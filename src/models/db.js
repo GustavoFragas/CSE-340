@@ -48,6 +48,7 @@ if (process.env.NODE_ENV === 'development' && process.env.ENABLE_SQL_LOGGING ===
      * and tracks the number of rows affected by each query.
      */
     db = {
+        connect: () => pool.connect(),
         async query(text, params) {
             try {
                 const start = Date.now();

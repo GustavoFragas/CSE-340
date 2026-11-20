@@ -40,4 +40,34 @@ const getCategoriesByProjectId = async (projectId) => {
     return result.rows;
 };
 
-export {getAllCategories, getCategoryDetails, getCategoriesByProjectId};
+const assignCategoryToProject = async (projectId, categoryId, client = db) => {
+    const query = `
+        INSERT INTO project_category (project_id, category_id)
+        VALUES ($1, $2)
+    `;
+
+    await client.query(query, [projectId, categoryId]);
+};
+
+const updateCategoryAssignments = async (projectId, categoryIds) => {
+    const client = await db.connect();
+
+    try {
+        await client.query('BEGIN');
+        await client.query('SELECT project_id FROM project WHERE project_id = $1 FOR UPDATE', [projectId]);
+        await client.query('DELETE FROM project_category WHERE project_id = $1', [projectId]);
+
+        for (const categoryId of categoryIds) {
+            await assignCategoryToProject(projectId, categoryId, client);
+        }
+
+        await client.query('COMMIT');
+    } catch (error) {
+        await client.query('ROLLBACK');
+        throw error;
+    } finally {
+        client.release();
+    }
+};
+
+export {getAllCategories, getCategoryDetails, getCategoriesByProjectId, updateCategoryAssignments};
